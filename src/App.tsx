@@ -1,9 +1,16 @@
-import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
+import { Navbar } from "./components/Nvabar";
 
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1 className="text-3xl font-bold underline bg-IndianYellow bg-opacity-5">
+        Hello world!
+      </h1>
+    </>
+  );
 }
 
 export default App;
