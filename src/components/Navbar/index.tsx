@@ -1,26 +1,34 @@
-import * as React from "react";
+import { useState } from "react";
+
 import {
   SearchIcon,
   HeartIcon as OutlinedHeart,
 } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeart } from "@heroicons/react/solid";
+import MenuIcon from "@heroicons/react/solid/MenuIcon";
+import MobileNavbar from "./MobileNavbar";
+import Sitebar from "./Sitebar";
 export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
+  const [isShow, setShow] = useState(false);
+  const toggleMobileNav = () => {
+    setShow((prevState) => !prevState);
+  };
   return (
-    <header className=" px-5 py-2 ">
-      <div className="flex w-full justify-between items-baseline ">
-        <h1 className="text-xl font-bold font-nova select-none">
+    <header className="container pt-5 mx-auto">
+      <div className="flex w-full items-center relative z-10">
+        {/* logo */}
+        <h1 className=" text-xl font-bold font-nova select-none whitespace-nowrap basis-[100%] md:basis-[25%]">
           Pyramids Store
         </h1>
-
-        <form>
-          <div className="relative">
+        {/* search */}
+        <form className="hidden md:flex basis-[50%]">
+          <div className="relative w-full">
             <input
               type="search"
               id="site-search"
-              // className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              className="w-[30rem] rounded-2xl pr-5 pl-3 bg-slate-100 py-3"
+              className="w-full rounded-2xl px-5 bg-slate-100 py-3"
               placeholder="search by author, title, name ..."
               required
             />
@@ -29,14 +37,23 @@ export function Navbar(props: NavbarProps) {
             </div>
           </div>
         </form>
-        <div className="flex row space-x-3 items-center">
+        {/* fav settings btns - > md */}
+        <div className="hidden md:flex row space-x-3 items-center basis-[25%] justify-end">
           <OutlinedHeart className="w-5 h-5 text-gray-500 dark:text-gray-400 hover:stroke-red-700 hover:cursor-pointer" />
-          <span className="flex items-center justify-center p-4 w-5 h-5 text-calmWhite bg-lightViolet rounded-full  ">
+          <span className="flex items-center justify-center p-4 w-5 h-5 text-calmWhite bg-lightViolet rounded-full font-semibold">
             0
           </span>
           <span>EN</span>
         </div>
+
+        <MenuIcon
+          className="w-5 h-5 md:hidden hover:cursor-pointer hover:text-lightViolet"
+          onClick={toggleMobileNav}
+        />
       </div>
+
+      <MobileNavbar isShow={isShow} />
+      <Sitebar />
     </header>
   );
 }
