@@ -1,7 +1,15 @@
-const Sitebar = () => {
+const Sitebar = ({ direction }: { direction: string }) => {
   return (
-    <nav className="flex flex-row justify-center py-5">
-      <ul className="flex flex-row space-x-5 select-none font-semibold">
+    <nav
+      className={`justify-center py-5 flex-${direction}  ${
+        direction === "row" ? "hidden md:flex" : ""
+      }`}
+    >
+      <ul
+        className={`flex flex-${direction} ${
+          direction === "row" ? "space-x-5" : "space-y-3"
+        } select-none font-semibold`}
+      >
         <li className="text-slate-400 hover:text-lightViolet hover:cursor-pointer">
           Home
         </li>

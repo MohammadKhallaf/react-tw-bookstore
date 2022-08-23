@@ -16,7 +16,7 @@ export function Navbar(props: NavbarProps) {
     setShow((prevState) => !prevState);
   };
   return (
-    <header className="container pt-5 mx-auto">
+    <header className="container pt-5 pb-3 mx-auto">
       <div className="flex w-full items-center relative z-10">
         {/* logo */}
         <h1 className=" text-xl font-bold font-nova select-none whitespace-nowrap basis-[100%] md:basis-[25%]">
@@ -53,7 +53,7 @@ export function Navbar(props: NavbarProps) {
       </div>
 
       <MobileNavbar isShow={isShow} />
-      <Sitebar />
+      <Sitebar direction="row" />
     </header>
   );
 }

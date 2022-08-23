@@ -1,14 +1,39 @@
-
 import "./App.css";
+import BookCard from "./components/BookCard";
+import HeroSection from "./components/HeroSection";
 import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <h1 className="text-3xl font-bold underline bg-IndianYellow bg-opacity-5">
-        Hello world!
-      </h1>
+      <main className="container mx-auto">
+      <HeroSection />
+        <section>
+          <div>
+            <h3 className="text-2xl font-bold mb-3">Popular Now</h3>
+            <div></div>
+          </div>
+
+          <div className="flex flex-row space-x-7 overflow-auto">
+            <BookCard
+              title="Pride of prese"
+              description="some book description"
+              rate={1}
+            />
+            <BookCard
+              title="Pride of prese"
+              description="some book description"
+              rate={1}
+            />
+            <BookCard
+              title="Pride of prese"
+              description="some book description"
+              rate={1}
+            />
+          </div>
+        </section>
+      </main>
     </>
   );
 }
