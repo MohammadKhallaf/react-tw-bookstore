@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Nova+Round&family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@layer components {
+  .nav__item {
+    @apply text-slate-400 hover:text-lightViolet hover:cursor-pointer relative;
+    &:hover::after {
+      @apply content-[""] absolute -bottom-3 h-[1px] w-[10px] rounded-full bg-lightViolet animate-ping left-[50%];
+      translate: -50%;
+    }
+  }
+}

@@ -3,28 +3,16 @@ const Sitebar = ({ direction }: { direction: string }) => {
     <nav
       className={`justify-center py-5 flex-${direction}  ${
         direction === "row" ? "hidden md:flex" : ""
-      }`}
-    >
+      }`}>
       <ul
         className={`flex flex-${direction} ${
           direction === "row" ? "space-x-5" : "space-y-3"
-        } select-none font-semibold`}
-      >
-        <li className="text-slate-400 hover:text-lightViolet hover:cursor-pointer">
-          Home
-        </li>
-        <li className="text-slate-400 hover:text-lightViolet  hover:cursor-pointer">
-          Bestseller
-        </li>
-        <li className="text-slate-400 hover:text-lightViolet  hover:cursor-pointer">
-          Category
-        </li>
-        <li className="text-slate-400 hover:text-lightViolet  hover:cursor-pointer">
-          Find a store
-        </li>
-        <li className="text-slate-400 hover:text-lightViolet  hover:cursor-pointer">
-          Blog
-        </li>
+        } select-none font-semibold`}>
+        <li className="nav__item">Home</li>
+        <li className="nav__item">Bestseller</li>
+        <li className="nav__item">Category</li>
+        <li className="nav__item">Find a store</li>
+        <li className="nav__item">Blog</li>
       </ul>
     </nav>
   );
