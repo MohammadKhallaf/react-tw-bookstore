@@ -8,6 +8,7 @@
 body {
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 5rem;
 }
 
 @layer components {
@@ -17,5 +18,9 @@ body {
       @apply content-[""] absolute -bottom-3 h-[1px] w-[10px] rounded-full bg-lightViolet animate-ping left-[50%];
       translate: -50%;
     }
+  }
+  .btm-nav__btn {
+    @apply px-4 py-2 bg-slate-600 text-lightCofee rounded-lg font-semibold disabled:text-slate-200 disabled:bg-slate-300 disabled:shadow-none
+    hover:bg-lightCofee hover:text-slate-600 hover:shadow-lg;
   }
 }
