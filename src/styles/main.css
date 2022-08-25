@@ -24,4 +24,8 @@ body {
     @apply px-4 py-2 bg-slate-600 text-lightCofee rounded-lg font-semibold disabled:text-slate-200 disabled:bg-slate-300 disabled:shadow-none
     hover:bg-lightCofee hover:text-slate-600 hover:shadow-lg;
   }
+
+  .book__icon {
+    @apply will-change-transform h-9 w-9 md:h-6 md:w-6 group-hover:text-white group-hover:drop-shadow-2xl transition-all duration-500 hover:cursor-pointer text-slate-300;
+  }
 }
