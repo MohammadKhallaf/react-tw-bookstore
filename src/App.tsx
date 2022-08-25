@@ -25,6 +25,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <div className="mt-20 md:mt-[10rem]"></div>
       <main className="container mx-auto">
         <HeroSection />
         <section className="mt-5">

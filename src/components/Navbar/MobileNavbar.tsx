@@ -1,20 +1,22 @@
 import {
   SearchIcon,
   HeartIcon as OutlinedHeart,
+  MenuIcon,
 } from "@heroicons/react/outline";
 import Sitebar from "./Sitebar";
 interface Props {
   isShow: boolean;
+  toggleShow: () => void;
 }
 const MobileNavbar = (props: Props) => {
   return (
     <div
-      className={`bg-lightCofee
+      className={`
       flex flex-col md:hidden  
       rounded-b-xl
-      pt-[4rem] pb-3 px-5 w-full
+      pt-3 pb-3 px-5 w-full mt-[3rem]
       transition-all ease-out duration-500 drop-shadow-md
-      absolute left-0 right-0
+      fixed left-0 right-0 z-10 bg-calmWhite
       ${props.isShow ? "top-0" : "-top-[30rem]"}`}
     >
       <Sitebar direction="col" />
