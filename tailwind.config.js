@@ -8,7 +8,7 @@ module.exports = {
         darkYellow: "hsl(33, 78%, 62%)",
         coldPink: "hsl(315, 64%, 61%)",
         calmWhite: " hsl(30, 25%, 98%)",
-        lightViolet: "hsl(267, 22%, 24%)",
+        lightViolet: "#5f42ab",
         darkViolet: "hsl(243, 62%, 17%)",
         lightCofee: "hsl(27, 46%, 81%)",
       },
@@ -19,5 +19,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };
