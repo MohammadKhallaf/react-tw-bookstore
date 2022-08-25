@@ -1,5 +1,6 @@
 import StarIcon from "@heroicons/react/solid/StarIcon";
 import InformationCircle from "@heroicons/react/outline/InformationCircleIcon";
+import { HeartIcon, PlusCircleIcon } from "@heroicons/react/outline";
 
 const BookCard = ({ book }: Book) => {
   let rate = 3;
@@ -13,7 +14,11 @@ const BookCard = ({ book }: Book) => {
           className="rounded-2xl w-full aspect-[3/4] object-cover group-hover:shadow-xl"
           alt=""
         />
-        <InformationCircle className="will-change-transform h-7 w-7 text-slate-300 absolute right-4 bottom-4 group-hover:animate-bounce group-hover:text-white  group-hover:drop-shadow-3xl transition-all duration-900 hover:cursor-pointer" />
+        <div className="absolute bottom-4 flex flex-row justify-around w-full group">
+          <HeartIcon className="book__icon  hover:stroke-red-700 " />
+          <PlusCircleIcon className="book__icon hover:stroke-violet-700 " />
+          <InformationCircle className="book__icon  hover:stroke-orange-600" />
+        </div>
       </div>
       <div className="flex flex-col px-1 pt-3 pb-2 grow">
         <p className="font-bold text-xl line-clamp-3 ">{book.title}</p>
