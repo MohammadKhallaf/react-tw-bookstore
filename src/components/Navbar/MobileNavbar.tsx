@@ -3,6 +3,7 @@ import {
   HeartIcon as OutlinedHeart,
   MenuIcon,
 } from "@heroicons/react/outline";
+import SearchForm from "../SearchForm";
 import Sitebar from "./Sitebar";
 interface Props {
   isShow: boolean;
@@ -27,20 +28,7 @@ const MobileNavbar = (props: Props) => {
         </span>
         <span>EN</span>
       </div>
-      <form className="w-full">
-        <div className="relative">
-          <input
-            type="search"
-            id="site-search"
-            className="w-full rounded-2xl px-5 pr-8 bg-slate-100 py-3"
-            placeholder="search by author, title, name ..."
-            required
-          />
-          <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
-            <SearchIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-          </div>
-        </div>
-      </form>
+      <SearchForm className="w-full px-3 mx-auto" />
     </div>
   );
 };
