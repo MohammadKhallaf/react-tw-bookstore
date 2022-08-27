@@ -1,5 +1,5 @@
-import { ArrowsExpandIcon } from "@heroicons/react/outline";
-import SearchIcon from "@heroicons/react/solid/SearchIcon";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import MagnifyingGlassIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 
 import axios from "axios";
 import React, { FormEvent, useRef, useState } from "react";
@@ -36,22 +36,9 @@ const SearchForm = ({ className = "" }) => {
         />
         <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
           {(isLoading && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 text-red-500 dark:text-red-400 animate-ping"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            <ArrowPathIcon className="w-5 h-5 text-red-500 dark:text-red-400 animate-ping" />
           )) || (
-            <SearchIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+            <MagnifyingGlassIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
           )}
         </div>
       </div>

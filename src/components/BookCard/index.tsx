@@ -1,10 +1,9 @@
-import StarIcon from "@heroicons/react/solid/StarIcon";
-import InformationCircle from "@heroicons/react/outline/InformationCircleIcon";
+import StarIcon from "@heroicons/react/24/solid/StarIcon";
+import InformationCircle from "@heroicons/react/24/outline/InformationCircleIcon";
 import {
   HeartIcon,
-  PlusCircleIcon,
   ShoppingBagIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
 const BookCard = ({ book }: Book) => {

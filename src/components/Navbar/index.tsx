@@ -1,12 +1,11 @@
 import { useState } from "react";
 
 import {
-  SearchIcon,
   HeartIcon as OutlinedHeart,
-  XIcon,
-} from "@heroicons/react/outline";
-import { HeartIcon as SolidHeart } from "@heroicons/react/solid";
-import MenuIcon from "@heroicons/react/solid/MenuIcon";
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { HeartIcon as SolidHeart } from "@heroicons/react/24/solid";
+import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
 import MobileNavbar from "./MobileNavbar";
 import Sitebar from "./Sitebar";
 import SearchForm from "../SearchForm";
@@ -26,8 +25,7 @@ export function Navbar(props: NavbarProps) {
           {/* logo */}
           <h1
             className=" text-xl font-bold font-nova select-none whitespace-nowrap basis-[100%] md:basis-[25%] hover:cursor-pointer"
-            onClick={() => navigate("/")}
-          >
+            onClick={() => navigate("/")}>
             Pyramids Store
           </h1>
           {/* search */}
@@ -42,12 +40,12 @@ export function Navbar(props: NavbarProps) {
             <span>EN</span>
           </div>
           {!isShow ? (
-            <MenuIcon
+            <Bars3Icon
               className="w-5 h-5 md:hidden hover:cursor-pointer hover:text-lightViolet"
               onClick={toggleMobileNav}
             />
           ) : (
-            <XIcon
+            <XMarkIcon
               className="w-5 h-5 md:hidden hover:cursor-pointer hover:text-lightViolet"
               onClick={toggleMobileNav}
             />

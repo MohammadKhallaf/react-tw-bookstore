@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { GlobeAltIcon, PencilIcon } from "@heroicons/react/outline";
+import { GlobeAltIcon, PencilIcon } from "@heroicons/react/24/outline";
 import ArrowDownTrayIcon from "../../components/Icons/ArrowDownTray";
 
 const BookPage = () => {

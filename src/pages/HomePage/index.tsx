@@ -1,4 +1,4 @@
-import { ArrowCircleDownIcon } from "@heroicons/react/outline";
+import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BookCard from "../../components/BookCard";
@@ -29,7 +29,7 @@ const HomePage = ({ page, setCount }: HomeProps) => {
 
         {isLoading ? (
           <div className="h-[50vh] w-full grid place-items-center">
-            <ArrowCircleDownIcon className="w-[10vh] animate-pulse text-amber-700" />
+            <ArrowDownCircleIcon className="w-[10vh] animate-pulse text-amber-700" />
           </div>
         ) : (
           <div className="py-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-7 gap-y-10 justify-items-center ">

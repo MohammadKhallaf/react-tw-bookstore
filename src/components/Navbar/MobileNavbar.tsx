@@ -1,8 +1,8 @@
 import {
-  SearchIcon,
+  MagnifyingGlassIcon,
   HeartIcon as OutlinedHeart,
-  MenuIcon,
-} from "@heroicons/react/outline";
+  Bars3Icon,
+} from "@heroicons/react/24/outline";
 import SearchForm from "../SearchForm";
 import Sitebar from "./Sitebar";
 interface Props {

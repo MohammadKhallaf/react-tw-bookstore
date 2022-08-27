@@ -4,7 +4,6 @@ import axios from "axios";
 import BookCard from "./components/BookCard";
 import HeroSection from "./components/HeroSection";
 import { Navbar } from "./components/Navbar";
-import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import BtmPagination from "./components/BtmPagination";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
