@@ -9,7 +9,7 @@ import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
 import MobileNavbar from "./MobileNavbar";
 import Sitebar from "./Sitebar";
 import SearchForm from "../SearchForm";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export interface NavbarProps {}
 
 export function Navbar(props: NavbarProps) {
@@ -25,8 +25,9 @@ export function Navbar(props: NavbarProps) {
           {/* logo */}
           <h1
             className=" text-xl font-bold font-nova select-none whitespace-nowrap basis-[100%] md:basis-[25%] hover:cursor-pointer"
-            onClick={() => navigate("/")}>
-            Pyramids Store
+            onClick={() => navigate("/")}
+          >
+            <Link to={"/"}>Pyramids Store</Link>
           </h1>
           {/* search */}
           <SearchForm className="hidden md:flex basis-[50%]" />

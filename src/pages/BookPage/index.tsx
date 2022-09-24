@@ -1,28 +1,29 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GlobeAltIcon, PencilIcon } from "@heroicons/react/24/outline";
 import ArrowDownTrayIcon from "../../components/Icons/ArrowDownTray";
+import { getBook, getSubject } from "../../services/books-api";
 
 const BookPage = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState<Book["book"]>();
   useEffect(() => {
-    axios.get("https://gutendex.com/books/" + bookId).then((res) => {
-      console.log(res.data);
-      setBook(res.data);
+    getBook(bookId!).then((res) => {
+      console.log(res);
+      setBook(res);
     });
   }, [bookId]);
 
   const topicHandler = (subject: string) => {
     // TODO: add debounce setTimeout
-    axios
-      .get("https://gutendex.com/books", { params: { topic: subject } })
-      .then((res) => console.log(res.data));
+    getSubject(subject).then((res) => console.log(res.data));
   };
+
   if (!book) {
     return <>Loading ... </>;
   }
+
+
   return (
     <article className="flex flex-col sm:flex-row  gap-4">
       <img
@@ -69,7 +70,7 @@ const BookPage = () => {
           {book.subjects.map((subject, idx) => {
             return (
               <span
-                className="border border-slate-900 border-solid rounded-full w-fit px-3 py-1"
+                className="border border-slate-900 border-solid rounded-full w-fit px-3 py-1 cursor-pointer"
                 key={`${subject}-${idx}`}
               >
                 {subject}

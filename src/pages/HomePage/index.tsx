@@ -1,8 +1,8 @@
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import BookCard from "../../components/BookCard";
 import HeroSection from "../../components/HeroSection";
+import { getAllBooks } from "../../services/books-api";
 interface HomeProps {
   page: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
@@ -10,14 +10,16 @@ interface HomeProps {
 const HomePage = ({ page, setCount }: HomeProps) => {
   const [bookList, setBookList] = useState<Book["book"][]>([]);
   const [isLoading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
-    axios(`https://gutendex.com/books?page=${page}`).then((res) => {
-      setBookList(res.data.results);
+    getAllBooks(page).then((res) => {
+      setBookList(res.results);
       setLoading(false);
-      setCount(Math.floor(res.data.count / 32));
+      setCount(Math.floor(res.count / 32));
     });
   }, [page, setCount]);
+
   return (
     <>
       <HeroSection />

@@ -1,11 +1,10 @@
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import MagnifyingGlassCircleIcon from "@heroicons/react/24/outline/MagnifyingGlassCircleIcon";
 import MagnifyingGlassIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 
-import axios from "axios";
 import React, { FormEvent, useRef, useState } from "react";
+import { searchBook } from "../../services/books-api";
 
 const SearchForm = ({ className = "" }) => {
-  const [query, setQuery] = useState("");
   const [isLoading, setLoading] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const submitHandler = (event: FormEvent) => {
@@ -14,13 +13,10 @@ const SearchForm = ({ className = "" }) => {
     if (!searchRef.current) {
       return;
     }
-    setQuery(searchRef.current.value.trim());
-    axios
-      .get("https://gutendex.com/books", { params: { search: query } })
-      .then((res) => {
-        console.log(res);
-        setLoading(false);
-      });
+    searchBook(searchRef.current.value.trim()).then((res) => {
+      console.log(res);
+      setLoading(false);
+    });
   };
   return (
     <form className={className} onSubmit={submitHandler}>
@@ -36,7 +32,7 @@ const SearchForm = ({ className = "" }) => {
         />
         <div className="flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none">
           {(isLoading && (
-            <ArrowPathIcon className="w-5 h-5 text-red-500 dark:text-red-400 animate-ping" />
+            <MagnifyingGlassCircleIcon className="w-5 h-5 text-green-900 dark:text-green-400 animate-ping" />
           )) || (
             <MagnifyingGlassIcon className="w-5 h-5 text-gray-500 dark:text-gray-400" />
           )}
