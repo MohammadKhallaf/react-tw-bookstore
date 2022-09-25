@@ -1,5 +1,4 @@
 // import "./HeroSection.css";
-import HeroImg from "../../assets/images/banner.svg";
 import { ReactComponent as HeroSVG } from "../../assets/images/banner.svg";
 const HeroSection = () => {
   return (
