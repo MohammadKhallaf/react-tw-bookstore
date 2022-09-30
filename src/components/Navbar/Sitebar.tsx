@@ -4,7 +4,7 @@ const Sitebar = ({ direction }: { direction: string }) => {
     <nav
       className={`justify-center pt-5 pb-3 flex-${direction}  ${
         direction === "row"
-          ? "hidden md:flex shadow-lg min-w-fit w-1/4 mx-auto px-5 md:pb-4 rounded-3xl mt-3"
+          ? "hidden md:flex shadow-lg min-w-fit w-1/4 mx-auto px-5 md:pb-4 rounded-3xl mt-3 bg-calmWhite"
           : ""
       }`}
     >

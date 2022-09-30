@@ -1,13 +1,28 @@
 import StarIcon from "@heroicons/react/24/solid/StarIcon";
 import InformationCircle from "@heroicons/react/24/outline/InformationCircleIcon";
-import {
-  HeartIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
+import { HeartIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import {
+  addFav,
+  addToCart,
+  selectCartItems,
+} from "@/app/features/user/userSlice";
+import { config, useSpring, animated } from "@react-spring/web";
 
-const BookCard = ({ book }: Book) => {
+interface BookCardProps {
+  book: Book;
+}
+const BookCard: React.FunctionComponent<BookCardProps> = ({ book }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(selectCartItems);
+  const springs = useSpring({
+    from: { scale: 0 },
+    to: { scale: 1 },
+    config: config.gentle,
+  });
+  const isInCart = cartItems.includes(book);
   let rate = 3;
   if (rate < 0) rate = 0;
   if (rate > 5) rate = 5;
@@ -15,7 +30,10 @@ const BookCard = ({ book }: Book) => {
     navigate("book/" + book.id);
   };
   return (
-    <div className="flex flex-col p-1 w-[80%] select-none">
+    <animated.div
+      className="flex flex-col p-1 w-[80%] select-none"
+      style={springs}
+    >
       <div className="relative group ">
         <img
           src={book.formats["image/jpeg"]}
@@ -23,8 +41,20 @@ const BookCard = ({ book }: Book) => {
           alt=""
         />
         <div className="absolute bottom-4 flex flex-row justify-around w-full group">
-          <HeartIcon className="book__icon  hover:stroke-red-700 " />
-          <ShoppingBagIcon className="book__icon hover:stroke-indigo-300 hover:drop-shadow-[0px_1px_2px_black] " />
+          <HeartIcon
+            className="book__icon  hover:stroke-red-700 "
+            onClick={() => {
+              dispatch(addFav());
+            }}
+          />
+          <ShoppingBagIcon
+            fill={(isInCart && "#5f42ab") || "none"}
+            stroke={(isInCart && "#b7a0f2") || "currentColor"}
+            className="book__icon hover:stroke-indigo-300 hover:drop-shadow-[0px_1px_2px_black] "
+            onClick={() => {
+              dispatch(addToCart(book));
+            }}
+          />
           <InformationCircle
             className="book__icon  hover:stroke-orange-600"
             onClick={infoBtnHandler}
@@ -47,7 +77,7 @@ const BookCard = ({ book }: Book) => {
           })}
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 
