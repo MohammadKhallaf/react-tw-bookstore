@@ -1,24 +1,25 @@
+import {
+  fetchAllBooks,
+  selectBooks,
+  selectLoading,
+} from "@/app/features/books/booksSlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import BookCard from "../../components/BookCard";
 import HeroSection from "../../components/HeroSection";
-import { getAllBooks } from "../../services/books-api";
+
 interface HomeProps {
   page: number;
-  setCount: React.Dispatch<React.SetStateAction<number>>;
 }
-const HomePage = ({ page, setCount }: HomeProps) => {
-  const [bookList, setBookList] = useState<Book["book"][]>([]);
-  const [isLoading, setLoading] = useState(false);
+const HomePage = ({ page }: HomeProps) => {
+  const booksList = useAppSelector(selectBooks);
+  const isLoading = useAppSelector(selectLoading);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setLoading(true);
-    getAllBooks(page).then((res) => {
-      setBookList(res.results);
-      setLoading(false);
-      setCount(Math.floor(res.count / 32));
-    });
-  }, [page, setCount]);
+    dispatch(fetchAllBooks(page));
+  }, [page]);
 
   return (
     <>
@@ -35,7 +36,7 @@ const HomePage = ({ page, setCount }: HomeProps) => {
           </div>
         ) : (
           <div className="py-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-7 gap-y-10 justify-items-center ">
-            {bookList.map((item) => (
+            {booksList.map((item) => (
               <BookCard key={item.id} book={item} />
             ))}
           </div>

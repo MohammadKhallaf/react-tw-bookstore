@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GlobeAltIcon, PencilIcon } from "@heroicons/react/24/outline";
 import ArrowDownTrayIcon from "../../components/Icons/ArrowDownTray";
-import { getBook, getSubject } from "../../services/books-api";
+import { getBook, getSubject } from "../../app/services/books-api";
 
 const BookPage = () => {
   const { bookId } = useParams();
-  const [book, setBook] = useState<Book["book"]>();
+  const [book, setBook] = useState<Book>();
   useEffect(() => {
     getBook(bookId!).then((res) => {
       console.log(res);

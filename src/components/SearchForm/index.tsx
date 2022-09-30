@@ -2,7 +2,7 @@ import MagnifyingGlassCircleIcon from "@heroicons/react/24/outline/MagnifyingGla
 import MagnifyingGlassIcon from "@heroicons/react/24/solid/MagnifyingGlassIcon";
 
 import React, { FormEvent, useRef, useState } from "react";
-import { searchBook } from "../../services/books-api";
+import { searchBook } from "../../app/services/books-api";
 
 const SearchForm = ({ className = "" }) => {
   const [isLoading, setLoading] = useState(false);

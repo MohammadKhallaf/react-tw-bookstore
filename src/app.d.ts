@@ -7,19 +7,17 @@ interface Person {
   name: string;
 }
 interface Book {
-  book: {
-    id: number;
-    title: string;
-    subjects: Array<string>;
-    authors: Array<Person>;
-    translators: Array<Person>;
-    bookshelves: Array<string>;
-    languages: Array<string>;
-    copyright: boolean | null;
-    media_type: string;
-    formats: Format<any>;
-    download_count: number;
-  };
+  id: number;
+  title: string;
+  subjects: Array<string>;
+  authors: Array<Person>;
+  translators: Array<Person>;
+  bookshelves: Array<string>;
+  languages: Array<string>;
+  copyright: boolean | null;
+  media_type: string;
+  formats: Format<any>;
+  download_count: number;
 }
 interface BookList {
   count: number;
@@ -27,3 +25,4 @@ interface BookList {
   previous: string | null;
   results: Array<Book>;
 }
+

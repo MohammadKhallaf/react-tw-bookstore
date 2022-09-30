@@ -1,18 +1,15 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import BookCard from "./components/BookCard";
-import HeroSection from "./components/HeroSection";
+import { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import BtmPagination from "./components/BtmPagination";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BookPage from "./pages/BookPage";
+import { useAppSelector } from "./app/hooks";
+import { selectCount } from "./app/features/books/booksSlice";
 
 function App() {
-  // TODO : replace with useReducer
   const [page, setPage] = useState(1);
-  const [count, setCount] = useState(0);
+  const count = useAppSelector(selectCount);
 
   return (
     <Router>
@@ -20,10 +17,7 @@ function App() {
       <div className="mt-20 md:mt-[10rem]"></div>
       <main className="container mx-auto">
         <Routes>
-          <Route
-            index
-            element={<HomePage page={page} setCount={setCount} />}
-          ></Route>
+          <Route index element={<HomePage page={page} />}></Route>
           <Route path="book">
             <Route path=":bookId" element={<BookPage />} />
           </Route>
