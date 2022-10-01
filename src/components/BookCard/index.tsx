@@ -8,31 +8,36 @@ import {
   addToCart,
   selectCartItems,
 } from "@/app/features/user/userSlice";
-import { config, useSpring, animated } from "@react-spring/web";
+import { config, useSpring, useSprings, animated } from "@react-spring/web";
+import { useEffect, useRef, useState } from "react";
 
 interface BookCardProps {
   book: Book;
 }
+
+const AnimatedCartIcon = animated(ShoppingBagIcon);
 const BookCard: React.FunctionComponent<BookCardProps> = ({ book }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(selectCartItems);
-  const springs = useSpring({
+  const cardSpring = useSpring({
     from: { scale: 0 },
     to: { scale: 1 },
-    config: config.gentle,
+    config: config.stiff,
   });
-  const isInCart = cartItems.includes(book);
-  let rate = 3;
-  if (rate < 0) rate = 0;
-  if (rate > 5) rate = 5;
+  const [btnSpring, btnApi] = useSpring(() => ({
+    from: { scale: 1 },
+    config: { ...config.wobbly, duration:250 },
+  }));
+
   const infoBtnHandler = () => {
     navigate("book/" + book.id);
   };
+
   return (
     <animated.div
       className="flex flex-col p-1 w-[80%] select-none"
-      style={springs}
+      style={cardSpring}
     >
       <div className="relative group ">
         <img
@@ -47,15 +52,30 @@ const BookCard: React.FunctionComponent<BookCardProps> = ({ book }) => {
               dispatch(addFav());
             }}
           />
-          <ShoppingBagIcon
-            fill={(isInCart && "#5f42ab") || "none"}
-            stroke={(isInCart && "#b7a0f2") || "currentColor"}
+
+          <AnimatedCartIcon
+            style={{
+              ...btnSpring,
+              transform: "perspective(600px) translateZ(0)",
+            }}
+            fill={(cartItems.includes(book) && "#876bce") || "none"}
+            stroke={(cartItems.includes(book) && "#130043") || "currentColor"}
             className="book__icon hover:stroke-indigo-300 hover:drop-shadow-[0px_1px_2px_black] "
             onClick={() => {
               dispatch(addToCart(book));
+              btnApi.start({
+                from: {
+                  scale: 10,
+                },
+                to: {
+                  scale: cartItems.includes(book) ? 1.1 : 1,
+                },
+              });
             }}
           />
+
           <InformationCircle
+            // style={btnSpring}
             className="book__icon  hover:stroke-orange-600"
             onClick={infoBtnHandler}
           />
@@ -68,14 +88,6 @@ const BookCard: React.FunctionComponent<BookCardProps> = ({ book }) => {
             {author.name}
           </p>
         ))}
-        <div className="flex flex-row mt-3">
-          {[...Array(rate)].map((_, idx) => {
-            return <StarIcon key={idx} className="h-5 w-5 text-darkYellow " />;
-          })}
-          {[...Array(5 - rate)].map((_, idx) => {
-            return <StarIcon key={idx} className="h-5 w-5 text-slate-400 " />;
-          })}
-        </div>
       </div>
     </animated.div>
   );
