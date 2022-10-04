@@ -37,7 +37,7 @@ const HomePage = ({ page }: HomeProps) => {
           </div>
         ) : (
           <>
-            <FilterBar />
+            {/* <FilterBar /> */}
             <div className="py-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-7 gap-y-10 justify-items-center ">
               {booksList.map((item) => (
                 <BookCard key={item.id} book={item} />
