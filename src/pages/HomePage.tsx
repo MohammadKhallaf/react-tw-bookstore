@@ -4,10 +4,11 @@ import {
   selectLoading,
 } from "@/app/features/books/booksSlice";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import FilterBar from "@/components/FilterBar";
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
-import BookCard from "../../components/BookCard";
-import HeroSection from "../../components/HeroSection";
+import BookCard from "../components/BookCard";
+import HeroSection from "../components/HeroSection";
 
 interface HomeProps {
   page: number;
@@ -35,11 +36,14 @@ const HomePage = ({ page }: HomeProps) => {
             <ArrowDownCircleIcon className="w-[10vh] animate-pulse text-amber-700" />
           </div>
         ) : (
-          <div className="py-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-7 gap-y-10 justify-items-center ">
-            {booksList.map((item) => (
-              <BookCard key={item.id} book={item} />
-            ))}
-          </div>
+          <>
+            <FilterBar />
+            <div className="py-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-7 gap-y-10 justify-items-center ">
+              {booksList.map((item) => (
+                <BookCard key={item.id} book={item} />
+              ))}
+            </div>
+          </>
         )}
       </section>
     </>
